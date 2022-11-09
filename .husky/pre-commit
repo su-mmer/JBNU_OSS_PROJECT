@@ -1,0 +1,8 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+echo "The husky will run automatically."
+
+eslint . --ext .js --fix
+
+echo "vi editor will run for commit message."
