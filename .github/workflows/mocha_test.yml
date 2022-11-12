@@ -22,6 +22,6 @@ jobs:
     - name: npm install, build, and test
       run: |
         npm install mocha -g
-        mocha test.spec.js
+        mocha test.spec.js --exit
       env:
         CI: true
