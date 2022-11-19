@@ -62,9 +62,9 @@ const lunch = async function (rtm, channel) {
 
       // 메뉴 평가를 통해 lunchScore 값이 1점 미만 또는 3점 초과가 될 수 있음
       // 1점 미만이라면 1점을, 3점 초과라면 3점을 부여
-      if (lunchScore < 1) {
+      if (lunchScore <= 1) {
         rtm.sendMessage('오늘의 식단은 1점', channel);
-      } else if (lunchScore > 3) {
+      } else if (lunchScore >= 3) {
         rtm.sendMessage('오늘의 식단은 3점', channel);
       } else {
         rtm.sendMessage(`오늘의 식단은 ${lunchScore}점`, channel);
