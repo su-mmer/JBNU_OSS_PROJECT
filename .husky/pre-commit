@@ -4,5 +4,3 @@
 echo "The husky will run automatically."
 
 eslint . --ext .js --fix
-
-echo "vi editor will run for commit message."
