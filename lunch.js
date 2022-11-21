@@ -14,21 +14,20 @@ async function webScraping(url, selector) {
   const $ = cheerio.load(html.data);
   const elements = $(selector);
 
+  // elements에 selector의 값을 모두 저장하고 그 중 text만 res에 저장
   elements.each((i, el) => {
     res[i] = $(el).text();
   });
 
-  const menu = [[res[9], res[10], res[11], res[12]],
-    [res[19], res[20], res[21], res[22]],
-    [res[39], res[40], res[41], res[42]],
-    [res[62], res[63], res[64], res[65]],
-    [res[81], res[82], res[83], res[84]]];
+  // 오늘 요일을 받아 res에서 찾을 index
+  const index = (todayDate.getDay() - 1) * 4;
+  const menu = [res[index], res[index + 1], res[index + 2], res[index + 3]];
 
-  return menu[todayDate.getDay() - 1];
+  return menu;
 }
 
 const url = 'https://sobi.chonbuk.ac.kr/menu/week_menu.php';
-const selector = 'div.contentsArea.WeekMenu > div:nth-child(219) > div:nth-child(2) > table > tbody > tr > td > ul > li';
+const selector = 'div.contentsArea.WeekMenu > div:nth-child(229) > div:nth-child(2) > table > tbody > tr > td > ul > li:has(span, font)';
 // 점심 메뉴 평가의 기본 점수는 2점
 let lunchScore = 2;
 
@@ -42,7 +41,6 @@ const lunch = async function (rtm, channel) {
     if (todayDay !== 0 && todayDay !== 6) {
       // 크롤링 결과 res로 받아와서 배열 내용 하나씩 출력
       // 점심 메뉴 안내 후 메뉴 평가 점수를 출력하기 위해 await 사용
-      // TODO 리팩토링
       await webScraping(url, selector).then((res) => {
         rtm.sendMessage(`${res[0]}, ${res[1]}, ${res[2]}, ${res[3]}`, channel);
 
