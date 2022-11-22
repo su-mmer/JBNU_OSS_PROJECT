@@ -1,5 +1,6 @@
 # Secret Key
 token
+.env
 
 # NodeJS module directory
 node_modules/
