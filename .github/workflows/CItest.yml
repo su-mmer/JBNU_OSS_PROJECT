@@ -24,14 +24,15 @@ jobs:
         npm install mocha -g
         npm install dotenv
         mocha test.spec.js --exit
+        echo token > ./token
+        echo token
       env:
         CI: true
+        token: ${{ secrets.TOKEN }}
 
     - name: run node
       run: |
-        npm ci
-        echo token > ./token
+        npm ci        
         node index.js
-      env:
-        token: ${{ secrets.TOKEN }}
+
        
