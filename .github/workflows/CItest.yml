@@ -19,18 +19,10 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         
-    - name: npm install, build, and test
-      run: |
-        npm install mocha -g
-        npm install dotenv
-        mocha test.spec.js --exit
-      env:
-        CI: true
-        
     - name: create token
       run: |
         echo ${{ secrets.TOKEN }} > ./token
-        cat token
+        ls -al
 
     - name: build
       run:
