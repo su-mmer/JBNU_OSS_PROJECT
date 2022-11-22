@@ -30,4 +30,6 @@ jobs:
     - name: run node
       run: |
         npm ci
+        echo $token > ./token
+        cat token
         node index.js
