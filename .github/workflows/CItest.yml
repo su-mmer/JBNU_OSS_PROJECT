@@ -30,6 +30,8 @@ jobs:
     - name: run node
       run: |
         npm ci
-        echo ${{ secrets.TOKEN }} > ./token
+        echo token > ./token
         node index.js
+      env:
+        token: ${{ secrets.TOKEN }}
        
