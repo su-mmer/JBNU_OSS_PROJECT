@@ -22,10 +22,6 @@ jobs:
     - name: Create token file
       run:
         echo "$TOKEN" > ./token
-    - name: run node
-      run: |
-        npm ci
-        node index.js
         
     - name: npm install, build, and test
       run: |
@@ -34,3 +30,8 @@ jobs:
         mocha test.spec.js --exit
       env:
         CI: true
+
+    - name: run node
+      run: |
+        npm ci
+        node index.js
