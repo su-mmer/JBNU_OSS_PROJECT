@@ -1,4 +1,4 @@
-name: CI test
+name: build test
 
 on: [push]
  
@@ -22,9 +22,8 @@ jobs:
     - name: create token
       run: |
         echo ${{ secrets.TOKEN }} > ./token
-        ls -al
 
     - name: build
-      run:
+      run: |
         npm install @slack/rtm-api
         node index.js
