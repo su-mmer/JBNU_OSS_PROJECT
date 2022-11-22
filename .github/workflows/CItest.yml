@@ -26,4 +26,5 @@ jobs:
 
     - name: build
       run:
+        npm install @slack/rtm-api
         node index.js
