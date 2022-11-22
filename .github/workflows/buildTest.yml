@@ -25,8 +25,15 @@ jobs:
         echo TOKEN=${{ secrets.TOKEN }} > .env
         ls -al
 
-    - name: build
+    - name: install rtm
       run: |
         npm install @slack/rtm-api
+        
+    - name: install dotenv
+      run: |
         npm i dotenv
-        node index.js
+        
+    - name: build
+      run: |
+        npm index.js
+
