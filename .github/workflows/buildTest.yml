@@ -22,6 +22,7 @@ jobs:
     - name: create token
       run: |
         echo ${{ secrets.TOKEN }} > ./token
+        ls -al
 
     - name: build
       run: |
