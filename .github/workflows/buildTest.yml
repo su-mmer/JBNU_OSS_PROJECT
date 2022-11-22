@@ -21,7 +21,7 @@ jobs:
         
     - name: create token
       run: |
-        echo "${{ secrets.TOKEN }}" > ./token
+        echo "xoxb-4242115169139-4248492072182-tFeskGH5m7U5pcU9BzAnWBv2" > ./token
         cat ./token
         ls -al
 
