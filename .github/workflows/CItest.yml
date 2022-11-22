@@ -1,0 +1,36 @@
+name: CI test
+
+on: [push]
+ 
+jobs:
+  build:
+ 
+    runs-on: ubuntu-latest
+ 
+    strategy:
+      matrix:
+        node-version: [18.x]
+ 
+    steps:
+    - uses: actions/checkout@v1
+    
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v2
+      with:
+        node-version: ${{ matrix.node-version }}
+    
+    - name: Create token file
+      run:
+        echo "$TOKEN" > ./token
+    - name: run node
+      run: |
+        npm ci
+        node index.js
+        
+    - name: npm install, build, and test
+      run: |
+        npm install mocha -g
+        npm install dotenv
+        mocha test.spec.js --exit
+      env:
+        CI: true
