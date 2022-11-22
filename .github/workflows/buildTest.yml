@@ -21,11 +21,11 @@ jobs:
         
     - name: create token
       run: |
-        echo "xoxb-4242115169139-4248492072182-tFeskGH5m7U5pcU9BzAnWBv2" > ./token
-        cat ./token
+        echo "${{ secrets.TOKEN }}" > ./token
         ls -al
 
     - name: build
       run: |
         npm install @slack/rtm-api
+        npm i dotenv
         node index.js
