@@ -33,7 +33,7 @@ let lunchScore = 2;
 
 // bot에 메세지 넘기는 함수
 const lunch = async function (rtm, channel) {
-  console.log('진수원 점심 메뉴 안내 및 평가');
+  console.log('진수원 점심 메뉴 안내 및 평가 실시합니다');
 
   try {
     // 오늘의 요일이 일요일(0)과 토요일(6)이 아니라면 점심 메뉴 안내를 해줌
@@ -72,6 +72,7 @@ const lunch = async function (rtm, channel) {
     }
     return Promise.resolve('success');
   } catch (error) {
+    console.log('error!', error.data);
     return Promise.resolve('error');
   }
 };
