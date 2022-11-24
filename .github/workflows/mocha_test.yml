@@ -1,9 +1,6 @@
 name: Mocha test
 
-on:
-  push:
-    paths:
-      - "**.js"
+on: [push]
 
 jobs:
   build:
