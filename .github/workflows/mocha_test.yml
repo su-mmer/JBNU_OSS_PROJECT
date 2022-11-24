@@ -1,15 +1,18 @@
 name: Mocha test
-on: [push]
- 
+
+on:
+  push:
+    paths:
+      - "**.js"
+
 jobs:
   build:
- 
     runs-on: ubuntu-latest
- 
+
     strategy:
       matrix:
         node-version: [18.x]
- 
+
     steps:
     - uses: actions/checkout@v1
     
