@@ -30,3 +30,5 @@ jobs:
         npm ci
         npm install mocha -g
         mocha test.spec.js --exit
+      env:
+        CI: true
