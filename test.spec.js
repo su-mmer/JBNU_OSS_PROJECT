@@ -40,8 +40,7 @@ describe('테스트를 시작합니다.', async () => {
       res = await greeting(rtm, channel);
       return res;
     });
-
-    it('인사 모듈 테스트', (done) => {
+    it('인사 모듈 테스트에 성공했습니다.', (done) => {
       console.log(res);
       assert.equal(res, 'success');
       done();
@@ -54,7 +53,7 @@ describe('테스트를 시작합니다.', async () => {
       return res;
     });
 
-    it('제곱 모듈 테스트', (done) => {
+    it('제곱 모듈 테스트에 성공했습니다.', (done) => {
       console.log(res);
       assert.equal(res, 'success');
       done();
@@ -64,10 +63,11 @@ describe('테스트를 시작합니다.', async () => {
   describe('점심 모듈 테스트', async () => {
     before(async () => {
       res = await lunch(rtm, channel);
+      console.log(res);
       return res;
     });
 
-    it('점심 메뉴 안내 및 평가 모듈 테스트', (done) => {
+    it('점심 메뉴 안내 및 평가 모듈 테스트에 성공했습니다.', (done) => {
       console.log(res);
       assert.equal(res, 'success');
       done();
