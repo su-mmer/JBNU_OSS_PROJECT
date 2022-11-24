@@ -63,7 +63,6 @@ describe('테스트를 시작합니다.', async () => {
   describe('점심 모듈 테스트', async () => {
     before(async () => {
       res = await lunch(rtm, channel);
-      console.log(res);
       return res;
     });
 

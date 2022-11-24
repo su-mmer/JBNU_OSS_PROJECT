@@ -27,6 +27,6 @@ jobs:
       run: |
         npm ci
         npm install mocha -g
-        mocha test.spec.js --exit
+        mocha test.spec.js --timeout 10000
       env:
         CI: true
