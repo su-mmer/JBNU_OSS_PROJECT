@@ -18,11 +18,14 @@ jobs:
       uses: actions/setup-node@v2
       with:
         node-version: ${{ matrix.node-version }}
+    
+    - name: create token
+      run: |
+        echo "${{ secrets.TOKEN }}" > ./token
+        # echo TOKEN=${{ secrets.TOKEN }} > .env
+        ls -al
         
     - name: npm install, build, and test
       run: |
-        npm install mocha -g
-        npm install dotenv
+        npm ci
         mocha test.spec.js --exit
-      env:
-        CI: true
