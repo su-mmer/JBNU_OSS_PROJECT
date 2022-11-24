@@ -1,16 +1,18 @@
 name: Mocha test
 
-on: [push]
- 
+on:
+  push:
+    paths:
+      - "**.js"
+
 jobs:
   build:
- 
     runs-on: ubuntu-latest
- 
+
     strategy:
       matrix:
         node-version: [18.x]
- 
+
     steps:
     - uses: actions/checkout@v1
     
@@ -18,11 +20,16 @@ jobs:
       uses: actions/setup-node@v2
       with:
         node-version: ${{ matrix.node-version }}
+
+    - name: create token
+      run: |
+        echo "${{ secrets.TOKEN }}" > ./token
+        ls -al
         
     - name: npm install, build, and test
       run: |
+        npm ci
         npm install mocha -g
-        npm install dotenv
-        mocha test.spec.js --exit
+        mocha test.spec.js --timeout 10000 --exit 
       env:
         CI: true
