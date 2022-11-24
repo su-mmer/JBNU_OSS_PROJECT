@@ -22,12 +22,10 @@ jobs:
     - name: create token
       run: |
         echo "${{ secrets.TOKEN }}" > ./token
-        # echo TOKEN=${{ secrets.TOKEN }} > .env
         ls -al
         
     - name: npm install, build, and test
       run: |
-        npm ci
         npm install mocha -g
         mocha test.spec.js --exit
       env:
