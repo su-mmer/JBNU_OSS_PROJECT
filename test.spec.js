@@ -4,7 +4,7 @@ const { RTMClient } = require('@slack/rtm-api');
 
 const fs = require('fs');
 
-const channel = 'D047E4D5F0D';
+const channel = 'C04A2C19U31';
 
 let token;
 
