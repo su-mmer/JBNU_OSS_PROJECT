@@ -4,12 +4,13 @@ const { RTMClient } = require('@slack/rtm-api');
 
 const fs = require('fs');
 
-const channel = 'D047E4D5F0D';
+const channel = 'C04A2C19U31';
 
 let token;
 
 try {
   token = fs.readFileSync('./token').toString('utf-8');
+  token = token.trim();
 } catch (err) {
   console.error(err);
 }
