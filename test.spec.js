@@ -41,9 +41,13 @@ describe('테스트를 시작합니다.', async () => {
   });
 
   it('인사 모듈 테스트', (done) => {
-    console.log(res);
-    assert.equal(res, 'success');
-    done();
+    try {
+      console.log(res);
+      assert.equal(res, 'success');
+      done();
+    } catch (err) {
+      done(err);
+    }
   });
 
   before(async () => {
