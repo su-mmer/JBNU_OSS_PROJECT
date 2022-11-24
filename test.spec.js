@@ -37,17 +37,14 @@ let res;
 describe('테스트를 시작합니다.', async () => {
   before(async () => {
     res = await greeting(rtm, channel);
+    assert.equal(res, 'success');
     return res;
   });
 
   it('인사 모듈 테스트', (done) => {
-    try {
-      console.log(res);
-      assert.equal(res, 'success');
-      done();
-    } catch (err) {
-      done(err);
-    }
+    console.log(res);
+    // assert.equal(res, 'success');
+    done();
   });
 
   before(async () => {
