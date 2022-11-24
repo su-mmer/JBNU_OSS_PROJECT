@@ -1,5 +1,4 @@
 name: Mocha test
-
 on: [push]
  
 jobs:
@@ -18,16 +17,11 @@ jobs:
       uses: actions/setup-node@v2
       with:
         node-version: ${{ matrix.node-version }}
-    
-    - name: create token
-      run: |
-        echo "${{ secrets.TOKEN }}" > ./token
-        ls -al
         
     - name: npm install, build, and test
       run: |
-        npm ci
         npm install mocha -g
+        npm install dotenv
         mocha test.spec.js --exit
       env:
         CI: true
