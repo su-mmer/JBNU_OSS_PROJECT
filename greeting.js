@@ -1,7 +1,7 @@
 const sendMessageArray = ['Hello', '안녕하세요', 'hola'];
 
 const greeting = function (rtm, channel) {
-  console.log('인사를 합시다.');
+  console.log('인사를 실시합니다');
 
   try {
     // 사용자가 'hi'를 입력할 때마다 0 ~ 2 중에서 랜덤으로 숫자를 골라 randomIndex에 저장한다.
