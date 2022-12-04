@@ -15,6 +15,7 @@ rtm.start();
 const greeting = require('./greeting');
 const square = require('./square');
 const lunch = require('./lunch');
+const weeklunch = require('./weeklunch');
 
 rtm.on('message', (message) => {
   const { channel } = message;
@@ -30,6 +31,9 @@ rtm.on('message', (message) => {
         break;
       case '오늘 점심 뭐야':
         lunch(rtm, channel);
+        break;
+      case '이번주 뭐 나와':
+        weeklunch(rtm, channel);
         break;
       default:
         rtm.sendMessage('I`m alive', channel);
