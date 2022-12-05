@@ -3,4 +3,5 @@
 
 echo "The husky will run automatically."
 
-eslint . --ext .js --fix
+# eslint . --ext .js --fix
+npx lint-staged

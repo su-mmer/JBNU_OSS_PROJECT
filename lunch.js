@@ -21,13 +21,13 @@ async function webScraping(url, selector) {
 
   // 오늘 요일을 받아 res에서 찾을 index
   const index = (todayDate.getDay() - 1) * 4;
-  const menu = [res[index], res[index + 1], res[index + 2], res[index + 3]];
+  const todayMenu = [res[index], res[index + 1], res[index + 2], res[index + 3]];
 
-  return menu;
+  return todayMenu;
 }
 
 const url = 'https://sobi.chonbuk.ac.kr/menu/week_menu.php';
-const selector = 'div.contentsArea.WeekMenu > div:nth-child(229) > div:nth-child(2) > table > tbody > tr > td > ul > li:has(span, font)';
+const selector = 'div.contentsArea.WeekMenu > div > div > table > tbody > tr > td > ul > li:has(span, font)';
 // 점심 메뉴 평가의 기본 점수는 2점
 let lunchScore = 2;
 
