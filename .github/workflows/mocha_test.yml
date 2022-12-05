@@ -8,7 +8,8 @@ on:
 jobs:
   MochaTest:
     name: mocha test
-    runs-on: ubuntu-latest
+    build:
+      runs-on: ubuntu-latest
 
     strategy:
       matrix:
