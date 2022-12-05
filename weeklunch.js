@@ -5,6 +5,12 @@ const cheerio = require('cheerio');
 const todayDate = new Date();
 // 오늘 요일 받아오기 위함
 const todayDay = todayDate.getDay();
+// 이번주 메뉴 담을 배열
+const MonMenu = new Array(4);
+const TueMenu = new Array(4);
+const WedMenu = new Array(4);
+const ThuMenu = new Array(4);
+const FriMenu = new Array(4);
 
 // 크롤링하는 함수
 // url과 selector를 받아서 오늘 날짜에 맞는 메뉴를 배열 형태로 return
@@ -20,10 +26,28 @@ async function webScraping(url, selector) {
   });
 
   // 오늘 요일을 받아 res에서 찾을 index
-  const index = (todayDate.getDay() - 1) * 4;
-  const todayMenu = [res[index], res[index + 1], res[index + 2], res[index + 3]];
+  for (let i = 0; i < 4; i += 1) {
+    MonMenu[i] = res[i];
+  }
+  for (let i = 4; i < 8; i += 1) {
+    TueMenu[i - 4] = res[i];
+  }
+  for (let i = 8; i < 12; i += 1) {
+    WedMenu[i - 8] = res[i];
+  }
+  for (let i = 12; i < 16; i += 1) {
+    ThuMenu[i - 12] = res[i];
+  }
+  for (let i = 16; i < 20; i += 1) {
+    FriMenu[i - 16] = res[i];
+  }
 
-  return todayMenu;
+  console.log(MonMenu);
+  console.log(TueMenu);
+  console.log(WedMenu);
+  console.log(ThuMenu);
+  console.log(FriMenu);
+//   return weekMenu;
 }
 
 const url = 'https://sobi.chonbuk.ac.kr/menu/week_menu.php';
@@ -33,7 +57,7 @@ let lunchScore = 2;
 
 // bot에 메세지 넘기는 함수
 const lunch = async function (rtm, channel) {
-  console.log('진수원 점심 메뉴 안내 및 평가 실시합니다');
+  console.log('이번주 진수원 점심 메뉴 평가를 실시합니다');
 
   try {
     // 오늘의 요일이 일요일(0)과 토요일(6)이 아니라면 점심 메뉴 안내를 해줌
@@ -42,8 +66,6 @@ const lunch = async function (rtm, channel) {
       // 크롤링 결과 res로 받아와서 배열 내용 하나씩 출력
       // 점심 메뉴 안내 후 메뉴 평가 점수를 출력하기 위해 await 사용
       await webScraping(url, selector).then((res) => {
-        rtm.sendMessage(`${res[0]}, ${res[1]}, ${res[2]}, ${res[3]}`, channel);
-
         // 메뉴에 미나리, 나물, 부추, 버섯, 샐러드가 있다면 -1점을,
         // 메뉴에 닭, 돈, 치킨, 치즈, 불고기가 있다면 +1점을 해줌
         // 또한 -1점 음식과 +1점 음식이 같이 있을 시(예)치킨샐러드), -1점 처리해주기 위해 -1점 메뉴를 먼저 검사하도록 설정
