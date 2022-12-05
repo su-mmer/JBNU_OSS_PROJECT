@@ -6,7 +6,8 @@ on:
       - "**.js"
 
 jobs:
-  build:
+  MochaTest:
+    name: mocha test
     runs-on: ubuntu-latest
 
     strategy:
