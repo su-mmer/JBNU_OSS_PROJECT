@@ -13,7 +13,7 @@ const FriMenu = new Array(4);
 
 // 크롤링하는 함수
 // url과 selector를 받아서 오늘 날짜에 맞는 메뉴를 배열 형태로 return
-const WebScraping = async function (url, selector) {
+async function WebScraping(url, selector) {
   const res = [];
   const html = await axios.get(url);
   const $ = cheerio.load(html.data);
@@ -48,7 +48,7 @@ const WebScraping = async function (url, selector) {
   console.log(FriMenu);
 
   return [MonMenu, TueMenu, WedMenu, ThuMenu, FriMenu];
-};
+}
 
 const url = 'https://sobi.chonbuk.ac.kr/menu/week_menu.php';
 const selector = 'div.contentsArea.WeekMenu > div > div > table > tbody > tr > td > ul > li:has(span, font)';
