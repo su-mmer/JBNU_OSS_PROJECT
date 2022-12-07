@@ -43,7 +43,7 @@ rtm.on('message', (message) => {
       case '이번주 뭐 나와':
         weeklunch(rtm, channel);
         break;
-      case '학과 안내':
+      case '학과 사무실 안내':
         rtm.sendMessage('학과를 입력해주세요', channel);
         deptCheck = 1;
         break;
