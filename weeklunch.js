@@ -13,7 +13,7 @@ const FriMenu = new Array(4);
 
 // 크롤링하는 함수
 // url과 selector를 받아서 오늘 날짜에 맞는 메뉴를 배열 형태로 return
-async function WebScraping(url, selector) {
+async function webScraping(url, selector) {
   const res = [];
   const html = await axios.get(url);
   const $ = cheerio.load(html.data);
@@ -62,7 +62,7 @@ const weeklunch = async function (rtm, channel) {
   console.log('이번주 진수원 점심 메뉴 평가를 실시합니다');
 
   try {
-    await WebScraping(url, selector).then((res) => {
+    await webScraping(url, selector).then((res) => {
       // menuscorecalc()를 이용해 월요일부터 차례대로 점심 메뉴 평가 후, weekLunchScore에 저장
       for (let i = 0; i < 5; i += 1) {
         weekLunchScore[i] = menuscorecalc(res[i]);
