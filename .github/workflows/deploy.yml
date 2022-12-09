@@ -10,12 +10,17 @@ jobs:
     name: Deploy
     runs-on: ubuntu-latest
 
+    strategy:
+      matrix:
+        node-version: [18.x]
+
     steps:
     - name: checkout
       uses: actions/checkout@main
 
     - name: create token
       run: |
+        npm ci
         echo "${{ secrets.TOKEN }}" > ./token
         ls -al
 
@@ -28,8 +33,18 @@ jobs:
         port: ${{ secrets.PORT }}
         script: |
           echo "login success"
-          rm -rf JBNU_OSS_PROJECT
-          git clone https://github.com/su-mmer/JBNU_OSS_PROJECT.git
-          cd JBNU_OSS_PROJECT
-          npm ci
-          npm start
+
+    - name: copy source via ssh key
+      uses: burnett01/rsync-deployments@4.1
+      with:
+        switches: -avzr --delete
+        remote_path: /root/ 
+        remote_host: ${{ secrets.HOST }}
+        remote_user: ${{ secrets.USERNAME }}
+        remote_key: ${{ secrets.PASSWORD }}
+        remote_port: ${{ secrets.PORT }}
+          # rm -rf JBNU_OSS_PROJECT
+          # git clone https://github.com/su-mmer/JBNU_OSS_PROJECT.git
+          # cd JBNU_OSS_PROJECT
+          # npm ci
+          # npm start
