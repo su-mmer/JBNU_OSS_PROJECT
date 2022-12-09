@@ -29,4 +29,6 @@ jobs:
         script: |
           echo "login success"
           git clone https://github.com/su-mmer/JBNU_OSS_PROJECT.git
+          cd JBNU_OSS_PROJECT.git
+          npm ci
           npm start
