@@ -1,7 +1,7 @@
 const winston = require('winston');
-const WinstonDaily = require('winston-daily-rotate-file'); // 날짜별로 로그 파일 저장
+const WinstonDaily = require('winston-daily-rotate-file'); // 날짜별로 로그 파일 저장을 위해 필요
 
-const logDir = 'logs'; // logs 디렉토리 하위에 로그 파일 저장
+const logDir = 'logs'; // logs 파일 하위에 로그 파일들을 저장하기 위해 필요
 
 const {
   combine, timestamp, printf,
@@ -23,11 +23,10 @@ const logger = winston.createLogger({
     // info 레벨 로그 저장을 위한 파일 설정
     new WinstonDaily({
       dirname: logDir,
-      datePattern: 'YYYY.MM.DD',
+      datePattern: 'YYYY.MM.DD', // 로그 파일 이름의 %DATE% 형식
       filename: '%DATE%_info.log',
       level: 'info',
       maxFiles: '30d', // 생성된 지 30일이 지난 로그 파일은 삭제
-      // zippedArchive: true, // 로그 파일 압축 여부
     }),
 
     // debug 레벨 로그 저장을 위한 파일 설정
@@ -37,7 +36,6 @@ const logger = winston.createLogger({
       filename: '%DATE%_debug.log',
       level: 'debug',
       maxFiles: '30d',
-      // zippedArchive: true,
     }),
   ],
 });
