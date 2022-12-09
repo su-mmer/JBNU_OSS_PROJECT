@@ -28,8 +28,8 @@ jobs:
       uses: appleboy/ssh-action@master
       with:
         host: ${{ secrets.HOST }}
-        username: ${{ secrets.USERNAME }}
-        password: ${{ secrets.PASSWORD }}
+        username: ${{ secrets.USER }}
+        password: ${{ secrets.USERPASS }}
         port: ${{ secrets.PORT }}
         script: |
           echo "login success"
@@ -40,6 +40,6 @@ jobs:
         switches: -avzr --delete
         remote_path: /root/JBNU_OSS_PROJECT
         remote_host: ${{ secrets.HOST }}
-        remote_user: ${{ secrets.USERNAME }}
+        remote_user: ${{ secrets.USER }}
         remote_key: ${{ secrets.KEY }}
         remote_port: ${{ secrets.PORT }}
