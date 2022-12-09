@@ -1,0 +1,4 @@
+# .yml에서 npm install, build 하기 위한 파일
+
+npm ci
+npm install mocha -g
