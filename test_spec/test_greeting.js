@@ -21,6 +21,7 @@ const rtm = new RTMClient(token);
   await rtm.start().catch(console.error);
 })();
 
+const assert = require('assert');
 const greeting = require('../greeting');
 
 let res;
@@ -32,8 +33,7 @@ describe('인사 테스트를 시작합니다', async () => {
   });
   it('인사 모듈 테스트', (done) => {
     console.log(res);
-    if (res === 'Hello' || res === '안녕하세요' || res === 'hola') {
-      done();
-    }
+    assert.equal(res, 'success');
+    done();
   });
 });
