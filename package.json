@@ -9,7 +9,7 @@
     "start": "node index.js"
   },
   "lint-staged": {
-    "*.js": "eslint --ext .js --fix"
+    "*.js": "eslint --fix"
   },
   "repository": {
     "type": "git",
