@@ -47,7 +47,7 @@ jobs:
       - name: npm install, build, and test greeting.js
         if: steps.filter.outputs.pathGreeting == 'true'
         run: |
-          NPM
+          NPM['value']
           mocha test_spec/test_greeting.js --timeout 10000 --exit
         env:
           CI: true
