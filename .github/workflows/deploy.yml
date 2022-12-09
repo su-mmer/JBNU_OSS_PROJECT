@@ -15,9 +15,9 @@ jobs:
       uses: actions/checkout@main
 
     - name: create token
-        run: |
-          echo "${{ secrets.TOKEN }}" > ./token
-          ls -al
+      run: |
+        echo "${{ secrets.TOKEN }}" > ./token
+        ls -al
 
     - name: check login to server
       uses: appleboy/ssh-action@main
