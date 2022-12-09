@@ -1,0 +1,29 @@
+name: Deploy to Naver Cloud
+
+on:
+  pull_request:
+    branches:
+      - test
+
+jobs:
+  Deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: checkout
+      uses: actions/checkout@main
+
+    - name: create token
+        run: |
+          echo "${{ secrets.TOKEN }}" > ./token
+          ls -al
+
+    - name: check login to server
+      uses: appleboy/ssh-action@main
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        password: ${{ secrets.PASSWORD }}
+        port: ${{ secrets.PORT }}
+        script: pwd
