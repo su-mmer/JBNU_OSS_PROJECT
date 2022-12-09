@@ -1,6 +1,6 @@
-NPM = YAML::load_erb('npm_install_build.yml')
-
 name: Mocha test
+
+NPM = YAML::load_erb('npm_install_build.yml')
 
 on:
   push:
