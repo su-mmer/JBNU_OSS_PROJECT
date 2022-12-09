@@ -28,7 +28,8 @@ jobs:
         port: ${{ secrets.PORT }}
         script: |
           echo "login success"
+          rm -rf JBNU_OSS_PROJECT
           git clone https://github.com/su-mmer/JBNU_OSS_PROJECT.git
-          cd JBNU_OSS_PROJECT.git
+          cd JBNU_OSS_PROJECT
           npm ci
           npm start
