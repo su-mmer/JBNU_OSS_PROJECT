@@ -1,9 +1,9 @@
 name: Deploy to Naver Cloud
 
 on:
-  pull_request:
+  push:
     branches:
-      - test
+      - feat/88
 
 jobs:
   Deploy:
@@ -43,8 +43,3 @@ jobs:
         remote_user: ${{ secrets.USERNAME }}
         remote_key: ${{ secrets.KEY }}
         remote_port: ${{ secrets.PORT }}
-          # rm -rf JBNU_OSS_PROJECT
-          # git clone https://github.com/su-mmer/JBNU_OSS_PROJECT.git
-          # cd JBNU_OSS_PROJECT
-          # npm ci
-          # npm start
