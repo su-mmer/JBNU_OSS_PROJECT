@@ -41,5 +41,5 @@ jobs:
         remote_path: /root/
         remote_host: ${{ secrets.HOST }}
         remote_user: ${{ secrets.USERNAME }}
-        remote_key: ${{ secrets.KEY }}
+        remote_key: ${{ secrets.PASSWORD }}
         remote_port: ${{ secrets.PORT }}
