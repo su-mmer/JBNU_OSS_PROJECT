@@ -1,3 +1,5 @@
+NPM = YAML::load_erb('npm_install_build.yml')
+
 name: Mocha test
 
 on:
@@ -45,8 +47,7 @@ jobs:
       - name: npm install, build, and test greeting.js
         if: steps.filter.outputs.pathGreeting == 'true'
         run: |
-          npm ci
-          npm install mocha -g
+          NPM
           mocha test_spec/test_greeting.js --timeout 10000 --exit
         env:
           CI: true
@@ -85,8 +86,7 @@ jobs:
       - name: npm install, build, and test department.js
         if: steps.filter.outputs.pathDepartment == 'true'
         run: |
-          npm ci
-          npm install mocha -g
+          NPM
           mocha test_spec/test_department.js --timeout 10000 --exit
         env:
           CI: true
