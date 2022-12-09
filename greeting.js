@@ -1,4 +1,4 @@
-const sendMessageArray = ['Hello', '안녕하세요', 'hola'];
+const sendMessageArray = ['Hello', '안녕하세요', 'hola', 'ohio'];
 
 const greeting = function (rtm, channel) {
   console.log('인사를 실시합니다');
