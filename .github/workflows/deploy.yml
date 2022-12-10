@@ -34,6 +34,7 @@ jobs:
         script: |
           echo "login success"
           whoami
+          pkill -9 -ef node
 
     - name: copy source via ssh key
       uses: burnett01/rsync-deployments@4.1
@@ -55,4 +56,4 @@ jobs:
         script: |
           cd server
           npm install
-          npm start &
+          nohup npm start &
