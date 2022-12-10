@@ -33,6 +33,7 @@ jobs:
         port: ${{ secrets.PORT }}
         script: |
           echo "login success"
+          whoami
 
     - name: copy source via ssh key
       uses: burnett01/rsync-deployments@4.1
@@ -52,5 +53,6 @@ jobs:
         password: ${{ secrets.PASSWORD }}
         port: ${{ secrets.PORT }}
         script: |
+          cd server
           npm ci
           npm start
