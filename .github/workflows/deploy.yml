@@ -54,5 +54,5 @@ jobs:
         port: ${{ secrets.PORT }}
         script: |
           cd server
-          npm ci
+          npm install
           npm start
