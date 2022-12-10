@@ -56,4 +56,5 @@ jobs:
         script: |
           cd server
           npm install
-          nohup npm start &
+          nohup npm start & > nohup_script.out
+          pwd
