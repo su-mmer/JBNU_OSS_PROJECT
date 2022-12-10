@@ -33,8 +33,9 @@ jobs:
         port: ${{ secrets.PORT }}
         script: |
           echo "login success"
-          pkill -9 -ef node
-          rm -rf server/
+          if [ -d "server/" ]; then
+            rm -rf server/
+          fi
 
     - name: copy source
       uses: burnett01/rsync-deployments@4.1
