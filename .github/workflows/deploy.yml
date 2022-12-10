@@ -28,29 +28,29 @@ jobs:
       uses: appleboy/ssh-action@master
       with:
         host: ${{ secrets.HOST }}
-        username: ${{ secrets.USERNAME }}
+        username: ${{ secrets.USER }}
         password: ${{ secrets.PASSWORD }}
         port: ${{ secrets.PORT }}
         script: |
           echo "login success"
 
-    - name: copy source via ssh key
-      uses: burnett01/rsync-deployments@4.1
-      with:
-        switches: -avzr --delete
-        remote_path: /root/
-        remote_host: ${{ secrets.HOST }}
-        remote_user: ${{ secrets.USERNAME }}
-        remote_key: ${{ secrets.KEY }}
-        remote_port: ${{ secrets.PORT }}
+    # - name: copy source via ssh key
+    #   uses: burnett01/rsync-deployments@4.1
+    #   with:
+    #     switches: -avzr --delete
+    #     remote_path: /home/slack/server
+    #     remote_host: ${{ secrets.HOST }}
+    #     remote_user: ${{ secrets.USERNAME }}
+    #     remote_key: ${{ secrets.KEY }}
+    #     remote_port: ${{ secrets.PORT }}
 
-    - name: execute slack-bot
-      uses: appleboy/ssh-action@master
-      with:
-        host: ${{ secrets.HOST }}
-        username: ${{ secrets.USERNAME }}
-        password: ${{ secrets.PASSWORD }}
-        port: ${{ secrets.PORT }}
-        script: |
-          npm ci
-          npm start
+    # - name: execute slack-bot
+    #   uses: appleboy/ssh-action@master
+    #   with:
+    #     host: ${{ secrets.HOST }}
+    #     username: ${{ secrets.USERNAME }}
+    #     password: ${{ secrets.PASSWORD }}
+    #     port: ${{ secrets.PORT }}
+    #     script: |
+    #       npm ci
+    #       npm start
