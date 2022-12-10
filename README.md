@@ -1,6 +1,6 @@
 # J Slack-bot
 
-<img src="https://img.shields.io/badge/javascript-F7DF1E?style=flat&logo=javascript&logoColor=black"> <img  src="https://img.shields.io/badge/node.js-339933?style=flat&logo=Node.js&logoColor=white"> <img src="https://img.shields.io/badge/Slack-4A154B?style=flat&logo=Slack"/> <img src="https://img.shields.io/badge/GitHub-181717?style=flat&logo=GitHub"/> ![GitHub top language](https://img.shields.io/github/languages/top/su-mmer/JBNU_OSS_PROJECT) 
+![Mocha test](https://github.com/su-mmer/JBNU_OSS_PROJECT/actions/workflows/mocha_test.yml/badge.svg?branch=main) [![Deploy to Naver Cloud](https://github.com/su-mmer/JBNU_OSS_PROJECT/actions/workflows/deploy.yml/badge.svg?branch=main)](https://github.com/su-mmer/JBNU_OSS_PROJECT/actions/workflows/deploy.yml) <img src="https://img.shields.io/badge/javascript-F7DF1E?style=flat&logo=javascript&logoColor=black"> <img  src="https://img.shields.io/badge/node.js-339933?style=flat&logo=Node.js&logoColor=white"> <img src="https://img.shields.io/badge/Slack-4A154B?style=flat&logo=Slack"/>
 
 <img src="https://www.jbnu.ac.kr/kor/images/227_10.jpg" width="100" height="100"/> <img  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6XPrWNVfSu1IYAl4V3ChiwBLLAwR81rQo-A&usqp=CAU" width="100" height="100"/> 
 
@@ -16,14 +16,14 @@
 ### 슬랙봇 살아있니?
 슬랙에게 아무말이나 걸어보세요. 슬랙은 항상 `I'm alive.`라고 대답해 자신이 동작 중임을 알려줄거에요.
 
-![image](https://user-images.githubusercontent.com/50980974/203709815-b1d0d1e3-e165-40ec-8fee-ec293493e29c.png)
+![image](https://user-images.githubusercontent.com/50980974/206871268-221cc5ca-ae8a-4a2a-9d4f-3e4bf9dd4a6a.png)
 
 
 ### 인사
 슬랙봇에게 인사를 해보세요.
 사용자가 `hi`를 입력하면 슬랙봇이 3가지 랜덤한 대답 중 하나로 반겨줄거에요.
 
-![image](https://user-images.githubusercontent.com/50980974/203709761-a85a1bd6-2459-42ec-a4ee-e476f8d72512.png)
+![image](https://user-images.githubusercontent.com/50980974/206871260-d2a9a3ce-bf99-46fe-b504-61e29d8853df.png)
 
 
 ### 오늘 점심 뭐야?
@@ -31,9 +31,13 @@
 별점은 정해진 고기 메뉴가 나오면 +1, 야채 메뉴가 나오면 -1로 설정 되어 있습니다. 1~3점 이내의 점수로 알려드릴게요.
 
 ![image](https://user-images.githubusercontent.com/50980974/203709794-4c61abeb-f360-49e8-b426-4637654e4b92.png)
+![image](https://user-images.githubusercontent.com/50980974/206871248-46554f3c-d115-429d-ab68-4743e6ab7029.png)
+
 
 ### 이번주 뭐 나와?
 진수당의 이번주 식단이 궁금하다면 `이번주 뭐 나와`라고 물으면 이번주의 식단을 평가해서 알려드려요. 오늘의 식단과 마찬가지로 1~3점 이내로 알려드려요.
+
+![image](https://user-images.githubusercontent.com/50980974/206871200-01e5ec17-8c35-4ce0-a7ef-48252eb42e1e.png)
 
 ### 학과 사무실 안내
 학과 위치가 궁금하신가요? `학과 사무실 안내`를 입력하고 궁금한 학과를 입력해주세요. 오타가 나더라도 가장 비슷한 학과를 찾아서 안내해드릴게요.
@@ -41,7 +45,7 @@
 ### 숫자 제곱
 슬랙봇에게 숫자를 알려주면 슬랙봇이 제곱수로 대답해줄거에요.
 
-![image](https://user-images.githubusercontent.com/50980974/203709850-9e92c7fa-6552-42f0-9cab-0dd585a100f5.png)
+![image](https://user-images.githubusercontent.com/50980974/206871234-3b3603df-3c84-4a5c-827e-1577d4ef365c.png)
 
 
 <br>
