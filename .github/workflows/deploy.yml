@@ -16,7 +16,7 @@ jobs:
 
     steps:
     - name: checkout
-      uses: actions/checkout@main
+      uses: actions/checkout@v2
 
     - name: create token
       run: |
@@ -24,7 +24,7 @@ jobs:
         echo "${{ secrets.TOKEN }}" > ./token
         ls -al
 
-    - name: check login to server
+    - name: login to server and stop bot
       uses: appleboy/ssh-action@master
       with:
         host: ${{ secrets.HOST }}
@@ -32,9 +32,7 @@ jobs:
         password: ${{ secrets.PASSWORD }}
         port: ${{ secrets.PORT }}
         script: |
-          echo "login success"
-          whoami
-          pkill -9 -ef node
+          pkill -9 -ef node || true
 
     - name: copy source via ssh key
       uses: burnett01/rsync-deployments@4.1
@@ -48,6 +46,8 @@ jobs:
 
     - name: execute slack-bot
       uses: appleboy/ssh-action@master
+      env:
+        RUNNER_TRACKING_ID: ""
       with:
         host: ${{ secrets.HOST }}
         username: ${{ secrets.USER }}
@@ -56,4 +56,4 @@ jobs:
         script: |
           cd server
           npm install
-          nohup npm start & 2>> nohup.out | sleep 2 | exit
+          nohup npm start >> nohup.out 2>&1 &
