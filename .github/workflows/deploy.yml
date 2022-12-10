@@ -32,6 +32,7 @@ jobs:
         password: ${{ secrets.PASSWORD }}
         port: ${{ secrets.PORT }}
         script: |
+          echo "login success"
           pkill -9 -ef node
 
     - name: copy source via ssh key
