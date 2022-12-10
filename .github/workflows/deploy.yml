@@ -57,4 +57,4 @@ jobs:
           cd server
           npm install
           nohup npm start & > nohup_script.out
-          pwd
+          exit
