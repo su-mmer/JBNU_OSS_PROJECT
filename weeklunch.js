@@ -42,6 +42,21 @@ async function webScraping(url, selector) {
     FriMenu[i - 16] = res[i];
   }
 
+  console.log(MonMenu);
+  logger.info('weeklunch.js__ 월요일 메뉴 크롤링');
+
+  console.log(TueMenu);
+  logger.info('weeklunch.js__ 화요일 메뉴 크롤링');
+
+  console.log(WedMenu);
+  logger.info('weeklunch.js__ 수요일 메뉴 크롤링');
+
+  console.log(ThuMenu);
+  logger.info('weeklunch.js__ 목요일 메뉴 크롤링');
+
+  console.log(FriMenu);
+  logger.info('weeklunch.js__ 금요일 메뉴 크롤링');
+
   return [MonMenu, TueMenu, WedMenu, ThuMenu, FriMenu];
 }
 
