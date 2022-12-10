@@ -44,13 +44,13 @@ jobs:
         remote_key: ${{ secrets.KEY }}
         remote_port: ${{ secrets.PORT }}
 
-    # - name: execute slack-bot
-    #   uses: appleboy/ssh-action@master
-    #   with:
-    #     host: ${{ secrets.HOST }}
-    #     username: ${{ secrets.USERNAME }}
-    #     password: ${{ secrets.PASSWORD }}
-    #     port: ${{ secrets.PORT }}
-    #     script: |
-    #       npm ci
-    #       npm start
+    - name: execute slack-bot
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USER }}
+        password: ${{ secrets.PASSWORD }}
+        port: ${{ secrets.PORT }}
+        script: |
+          npm ci
+          npm start
