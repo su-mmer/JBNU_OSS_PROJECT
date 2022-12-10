@@ -4,7 +4,7 @@
   "description": "오픈소스 소프트웨어 개발 프로젝트",
   "main": "index.js",
   "scripts": {
-    "test": "mocha test.spec.js --timeout 10000",
+    "test": "mocha test_spec/ --timeout 10000",
     "prepare": "husky install",
     "start": "node index.js"
   },
