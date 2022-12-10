@@ -56,5 +56,4 @@ jobs:
         script: |
           cd server
           npm install
-          nohup npm start & > nohup_script.out
-          exit
+          nohup npm start & > nohup_script.out | sleep 1 | echo -ne '\n'
