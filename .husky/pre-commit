@@ -3,5 +3,8 @@
 
 echo "The husky will run automatically."
 
+# exec >/dev/tty: 가상터미널 실행
+# 2>&1: 표준 에러를 표준 출력으로 재지정하여 발생한 에러를 tty로 전송.
+exec >/dev/tty 2>&1
 # eslint . --ext .js --fix
 npx lint-staged

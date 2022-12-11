@@ -1,0 +1,60 @@
+name: Deploy to Naver Cloud
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  Deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [18.x]
+
+    steps:
+    - name: checkout
+      uses: actions/checkout@v2
+
+    - name: create token
+      run: |
+        npm ci
+        echo "${{ secrets.TOKEN }}" > ./dev_token
+        ls -al
+
+    - name: login to server and stop bot
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USER }}
+        password: ${{ secrets.PASSWORD }}
+        port: ${{ secrets.PORT }}
+        script: |
+          echo "login success"
+          pkill -9 -ef node
+
+    - name: copy source
+      uses: burnett01/rsync-deployments@4.1
+      with:
+        switches: -avzr --delete
+        remote_path: /home/slack/server/
+        remote_host: ${{ secrets.HOST }}
+        remote_user: ${{ secrets.USER }}
+        remote_key: ${{ secrets.KEY }}
+        remote_port: ${{ secrets.PORT }}
+
+    - name: execute slack-bot
+      uses: appleboy/ssh-action@master
+      env:
+        RUNNER_TRACKING_ID: ""
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USER }}
+        password: ${{ secrets.PASSWORD }}
+        port: ${{ secrets.PORT }}
+        script: |
+          cd server
+          npm install
+          nohup npm start >> nohup.out 2>&1 &

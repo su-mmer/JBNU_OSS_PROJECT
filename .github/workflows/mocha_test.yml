@@ -3,10 +3,15 @@ name: Mocha test
 on:
   push:
     paths:
-      - "**.js"
+      - "greeting.js"
+      - "square.js"
+      - "lunch.js"
+      - "weeklunch.js"
+      - "department.js"
 
 jobs:
-  build:
+  Mocha:
+    name: mocha_test
     runs-on: ubuntu-latest
 
     strategy:
@@ -14,22 +19,74 @@ jobs:
         node-version: [18.x]
 
     steps:
-    - uses: actions/checkout@v1
-    
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v2
-      with:
-        node-version: ${{ matrix.node-version }}
+      - uses: actions/checkout@v1
 
-    - name: create token
-      run: |
-        echo "${{ secrets.TOKEN }}" > ./token
-        ls -al
-        
-    - name: npm install, build, and test
-      run: |
-        npm ci
-        npm install mocha -g
-        mocha test.spec.js --timeout 10000 --exit 
-      env:
-        CI: true
+      - uses: dorny/paths-filter@v2
+        id: filter
+        with:
+          filters: |
+            pathGreeting:
+              - 'greeting.js'
+            pathSquare:
+              - 'square.js'
+            pathLunch:
+              - 'lunch.js'
+            pathWeeklunch:
+              - 'weeklunch.js'
+            pathDepartment:
+              - 'department.js'
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: create DEV_TOKEN
+        run: |
+          echo "${{ secrets.DEV_TOKEN }}" > ./dev_token
+          ls -al
+
+      - name: npm install, build
+        run: |
+          npm ci
+          npm install mocha -g
+
+      # push된 파일이 greeting.js일 경우 test_greeting.js 실행
+      - name: test greeting.js
+        if: steps.filter.outputs.pathGreeting == 'true'
+        run: |
+          mocha test_spec/test_greeting.js --timeout 10000 --exit
+        env:
+          CI: true
+
+      # push된 파일이 square.js일 경우 test_square.js 실행
+      - name: test square.js
+        if: steps.filter.outputs.pathSquare == 'true'
+        run: |
+          mocha test_spec/test_square.js --timeout 10000 --exit
+        env:
+          CI: true
+
+      # push된 파일이 lunch.js일 경우 test_lunch.js 실행
+      - name: test lunch.js
+        if: steps.filter.outputs.pathLunch == 'true'
+        run: |
+          mocha test_spec/test_lunch.js --timeout 10000 --exit
+        env:
+          CI: true
+
+      # push된 파일이 weeklunch.js일 경우 test_weeklunch.js 실행
+      - name: test weeklunch.js
+        if: steps.filter.outputs.pathWeeklunch == 'true'
+        run: |
+          mocha test_spec/test_weeklunch.js --timeout 10000 --exit
+        env:
+          CI: true
+
+      # push된 파일이 department.js일 경우 test_department.js 실행
+      - name: test department.js
+        if: steps.filter.outputs.pathDepartment == 'true'
+        run: |
+          mocha test_spec/test_department.js --timeout 10000 --exit
+        env:
+          CI: true
