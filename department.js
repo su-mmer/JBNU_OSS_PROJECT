@@ -13,6 +13,7 @@ const department = function (rtm, text, channel) {
     inputText.stdout.on('data', (data) => {
       console.log(data.toString());
       rtm.sendMessage(data.toString(), channel);
+      logger.info(`봇 메시지: ${data.toString()}`);
     });
     return Promise.resolve('success');
   } catch (error) {

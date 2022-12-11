@@ -20,7 +20,7 @@ async function webScraping(url, selector) {
 
   // elements에 selector의 값을 모두 저장하고 그 중 text만 res에 저장
   elements.each((i, el) => {
-    res[i] = $(el).text();
+    res[i] = $(el).text().trim();
   });
 
   // 오늘 요일을 받아 res에서 찾을 index
@@ -48,12 +48,15 @@ const lunch = async function (rtm, channel) {
       // 점심 메뉴 안내 후 메뉴 평가 점수를 출력하기 위해 await 사용
       await webScraping(url, selector).then((res) => {
         rtm.sendMessage(`${res[0]}, ${res[1]}, ${res[2]}, ${res[3]}`, channel);
+        logger.info(`봇 메시지: ${res[0]}, ${res[1]}, ${res[2]}, ${res[3]}`);
         lunchScore = menuscorecalc(res);
       });
 
       rtm.sendMessage(`오늘의 식단은 ${lunchScore}점`, channel);
+      logger.info(`봇 메시지: 오늘의 식단은 ${lunchScore}점`);
     } else {
       rtm.sendMessage('토요일과 일요일은 진수원 휴무입니다.', channel);
+      logger.info('봇 메시지: 토요일과 일요일은 진수원 휴무입니다.');
     }
     return Promise.resolve('success');
   } catch (error) {

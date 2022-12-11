@@ -22,7 +22,7 @@ async function webScraping(url, selector) {
 
   // elements에 selector의 값을 모두 저장하고 그 중 text만 res에 저장
   elements.each((i, el) => {
-    res[i] = $(el).text();
+    res[i] = $(el).text().trim();
   });
 
   // 오늘 요일을 받아 res에서 찾을 index
@@ -43,19 +43,19 @@ async function webScraping(url, selector) {
   }
 
   console.log(MonMenu);
-  logger.info('weeklunch.js__ 월요일 메뉴 크롤링');
+  logger.info(`월요일: ${MonMenu}`);
 
   console.log(TueMenu);
-  logger.info('weeklunch.js__ 화요일 메뉴 크롤링');
+  logger.info(`화요일: ${TueMenu}`);
 
   console.log(WedMenu);
-  logger.info('weeklunch.js__ 수요일 메뉴 크롤링');
+  logger.info(`수요일: ${WedMenu}`);
 
   console.log(ThuMenu);
-  logger.info('weeklunch.js__ 목요일 메뉴 크롤링');
+  logger.info(`목요일: ${ThuMenu}`);
 
   console.log(FriMenu);
-  logger.info('weeklunch.js__ 금요일 메뉴 크롤링');
+  logger.info(`금요일: ${FriMenu}`);
 
   return [MonMenu, TueMenu, WedMenu, ThuMenu, FriMenu];
 }
@@ -81,10 +81,19 @@ const weeklunch = async function (rtm, channel) {
     });
 
     rtm.sendMessage(`월요일 - ${weekLunchScore[0]}점`, channel);
+    logger.info(`봇 메시지: 월요일 - ${weekLunchScore[0]}점`);
+
     rtm.sendMessage(`화요일 - ${weekLunchScore[1]}점`, channel);
+    logger.info(`봇 메시지: 화요일 - ${weekLunchScore[1]}점`);
+
     rtm.sendMessage(`수요일 - ${weekLunchScore[2]}점`, channel);
+    logger.info(`봇 메시지: 수요일 - ${weekLunchScore[2]}점`);
+
     rtm.sendMessage(`목요일 - ${weekLunchScore[3]}점`, channel);
+    logger.info(`봇 메시지: 목요일 - ${weekLunchScore[3]}점`);
+
     rtm.sendMessage(`금요일 - ${weekLunchScore[4]}점`, channel);
+    logger.info(`봇 메시지: 금요일 - ${weekLunchScore[4]}점`);
 
     return Promise.resolve('success');
   } catch (error) {
