@@ -21,7 +21,7 @@ jobs:
     - name: create token
       run: |
         npm ci
-        echo "${{ secrets.TOKEN }}" > ./token
+        echo "${{ secrets.TOKEN }}" > ./dev_token
         ls -al
 
     - name: login to server and stop bot
