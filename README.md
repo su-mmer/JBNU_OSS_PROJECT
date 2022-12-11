@@ -1,6 +1,6 @@
 # J Slack-bot
 
-![Mocha test](https://github.com/su-mmer/JBNU_OSS_PROJECT/actions/workflows/mocha_test.yml/badge.svg?branch=main) [![Deploy to Naver Cloud](https://github.com/su-mmer/JBNU_OSS_PROJECT/actions/workflows/deploy.yml/badge.svg?branch=main)](https://github.com/su-mmer/JBNU_OSS_PROJECT/actions/workflows/deploy.yml) <img src="https://img.shields.io/badge/javascript-F7DF1E?style=flat&logo=javascript&logoColor=black"> <img  src="https://img.shields.io/badge/node.js-339933?style=flat&logo=Node.js&logoColor=white"> <img src="https://img.shields.io/badge/Slack-4A154B?style=flat&logo=Slack"/>
+[![Mocha test](https://github.com/su-mmer/JBNU_OSS_PROJECT/actions/workflows/mocha_test.yml/badge.svg)](https://github.com/su-mmer/JBNU_OSS_PROJECT/actions/workflows/mocha_test.yml) <img src="https://img.shields.io/badge/javascript-F7DF1E?style=flat&logo=javascript&logoColor=black"> <img  src="https://img.shields.io/badge/node.js-339933?style=flat&logo=Node.js&logoColor=white"> <img src="https://img.shields.io/badge/Slack-4A154B?style=flat&logo=Slack"/>
 
 <img src="https://www.jbnu.ac.kr/kor/images/227_10.jpg" width="100" height="100"/> <img  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6XPrWNVfSu1IYAl4V3ChiwBLLAwR81rQo-A&usqp=CAU" width="100" height="100"/> 
 
