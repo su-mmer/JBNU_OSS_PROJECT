@@ -3,7 +3,11 @@ name: Mocha test
 on:
   push:
     paths:
-      - "**.js"
+      - "greeting.js"
+      - "square.js"
+      - "lunch.js"
+      - "weeklunch.js"
+      - "department.js"
 
 jobs:
   Mocha:
