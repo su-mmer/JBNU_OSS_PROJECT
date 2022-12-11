@@ -7,8 +7,8 @@ const department = function (rtm, text, channel) {
   logger.info('department.js__ 학과 사무실 안내 실시');
 
   try {
-    // 'python3 ./findDepartment.py text'를 실행시켜 inputText에 저장
-    const inputText = spawn('python3', ['./findDepartment.py', text.trim()]);
+    // 'python ./findDepartment.py text'를 실행시켜 inputText에 저장
+    const inputText = spawn('python', ['./findDepartment.py', text.trim()]);
     // 결과값 result를 봇에게 전달
     inputText.stdout.on('data', (data) => {
       console.log(data.toString());

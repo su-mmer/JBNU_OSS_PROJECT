@@ -53,7 +53,8 @@
 ## To start using Slack-bot
 
 > 필요한 것: 서버(로컬 또는 클라우드), 슬랙
-> nodejs(16.x이상), python3 이상
+> nodejs(16.x이상), python3.8 사용(3.11에서는 editdistance 작동 안함)
+> pip install editdistance
 
 1. git clone 또는 zip파일을 다운 받아 주세요.
 	``` bash
@@ -65,9 +66,12 @@
 	```
 3. 사용 할 슬랙봇의 토큰 번호를 받아옵니다. 슬랙 > 봇 정보에서 `xoxb`로 시작하는 토큰 번호를 확인 할 수 있습니다.
 
-4. 최상위 루트에 `token`파일을 생성합니다.
+4. 최상위 루트에 토큰 파일을 생성합니다.
 	``` bash
-	$ echo <토큰번호> > ./token
+	<!-- 로컬 사용시 -->
+	$ echo <토큰> > ./dev_token
+	<!-- 서버 사용시 -->
+	$ echo <토큰> > ./token
 	```
 	이 때, 토큰 파일을 확인하여 개행이 없도록 해야합니다. 토큰 파일에는 오로지 토큰 번호만 있어야합니다.
 
@@ -82,8 +86,8 @@
 
 ## To start developing Slack-bot
 
->  필요한 것: 서버(로컬 또는 클라우드), 슬랙
-> nodejs(16.x이상), python3 이상
+> 필요한 것: 서버(로컬 또는 클라우드), 슬랙
+> nodejs(16.x이상), python3.8 사용(3.11에서는 editdistance 작동 안함)
 > pip install editdistance
 
 1. GitHub에 `New Issue`를 등록해주세요. 양식은 Issue 생성 시에 선택하실 수 있습니다.
@@ -110,7 +114,7 @@
 
 ### Git Action을 이용한 배포를 설정하고 싶다면
 
-1. Repository > Settings > Actions > Secrets에 아래 사항들을 등록해주세요.
+1. Repository > Settings > Secrets > Actions에 아래 사항들을 등록해주세요.
 > HOST > 내 서버 주소 또는 공인 IP  
 > USER > 서버에서 로그인 할 user name  
 > PASSWORD > user의 비밀번호  
