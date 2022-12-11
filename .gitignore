@@ -3,3 +3,6 @@ token
 
 # NodeJS module directory
 node_modules/
+
+# log files
+logs/

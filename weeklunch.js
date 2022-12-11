@@ -1,6 +1,7 @@
 // 크롤링에 필요
 const axios = require('axios');
 const cheerio = require('cheerio');
+const logger = require('./winston');
 
 const menuscorecalc = require('./menuscorecalc');
 
@@ -42,10 +43,19 @@ async function webScraping(url, selector) {
   }
 
   console.log(MonMenu);
+  logger.info('weeklunch.js__ 월요일 메뉴 크롤링');
+
   console.log(TueMenu);
+  logger.info('weeklunch.js__ 화요일 메뉴 크롤링');
+
   console.log(WedMenu);
+  logger.info('weeklunch.js__ 수요일 메뉴 크롤링');
+
   console.log(ThuMenu);
+  logger.info('weeklunch.js__ 목요일 메뉴 크롤링');
+
   console.log(FriMenu);
+  logger.info('weeklunch.js__ 금요일 메뉴 크롤링');
 
   return [MonMenu, TueMenu, WedMenu, ThuMenu, FriMenu];
 }
@@ -60,6 +70,7 @@ const weekLunchScore = new Array(5);
 // bot에 메세지 넘기는 함수
 const weeklunch = async function (rtm, channel) {
   console.log('이번주 진수원 점심 메뉴 평가를 실시합니다');
+  logger.info('weeklunch.js__ 이번주 진수원 점심 메뉴 평가 실시');
 
   try {
     await webScraping(url, selector).then((res) => {
@@ -78,6 +89,7 @@ const weeklunch = async function (rtm, channel) {
     return Promise.resolve('success');
   } catch (error) {
     console.log('error!', error.data);
+    logger.debug('weeklunch.js__ 이번주 진수원 점심 메뉴 평가 오류');
     return Promise.resolve('error');
   }
 };
