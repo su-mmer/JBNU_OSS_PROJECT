@@ -13,6 +13,7 @@ try {
 const rtm = new RTMClient(token);
 rtm.start();
 
+const logger = require('./winston');
 const greeting = require('./greeting');
 const square = require('./square');
 const lunch = require('./lunch');
@@ -26,6 +27,7 @@ let deptCheck = false;
 rtm.on('message', (message) => {
   const { channel } = message;
   const { text } = message;
+  logger.info(`사용자 입력: ${text}`);
 
   // !isNaN(text) -> !Number.isNaN(Number(text))
   if (!Number.isNaN(Number(text))) {
@@ -46,10 +48,12 @@ rtm.on('message', (message) => {
         break;
       case '학과 사무실 안내':
         rtm.sendMessage('학과를 입력해주세요', channel);
+        logger.info('봇 메시지: 학과를 입력해주세요');
         deptCheck = true;
         break;
       default:
         rtm.sendMessage('I`m alive', channel);
+        logger.info('봇 메시지: I`m alive');
     }
   }
 });
