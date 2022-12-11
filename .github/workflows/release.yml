@@ -8,7 +8,8 @@ on:
     types: [ closed ]
 
 jobs:
-  build:
+  Release:
+    name: release
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2

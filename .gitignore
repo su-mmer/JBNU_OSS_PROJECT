@@ -1,5 +1,6 @@
 # Secret Key
 token
+dev_token
 
 # NodeJS module directory
 node_modules/
