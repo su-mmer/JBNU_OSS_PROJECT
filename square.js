@@ -6,6 +6,7 @@ const square = function (rtm, text, channel) {
 
   try {
     rtm.sendMessage(`The result is ${text * text}`, channel);
+    logger.info(`봇 메시지: ${text * text}`);
     return Promise.resolve('success');
   } catch (error) {
     console.log('error!', error.data);

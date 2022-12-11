@@ -11,6 +11,7 @@ const greeting = function (rtm, channel) {
     // 그 후, sendMessageArray의 randomIndex에 해당하는 인사 대답을 사용자에게 보낸다.
     const randomIndex = Math.floor(Math.random() * 3);
     rtm.sendMessage(sendMessageArray[randomIndex], channel);
+    logger.info(`봇 메시지: ${sendMessageArray[randomIndex]}`);
     return Promise.resolve('success');
   } catch (error) {
     console.log('error!', error.data);
