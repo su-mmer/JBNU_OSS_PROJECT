@@ -4,7 +4,7 @@ let token;
 const fs = require('fs');
 
 try {
-  token = fs.readFileSync('./token', 'utf-8');
+  token = fs.readFileSync('./dev_token', 'utf-8');
   token = token.trim();
 } catch (err) {
   console.error(err);

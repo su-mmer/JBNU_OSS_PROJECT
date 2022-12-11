@@ -6,7 +6,8 @@ on:
       - "**.js"
 
 jobs:
-  build:
+  Mocha:
+    name: mocha_test
     runs-on: ubuntu-latest
 
     strategy:
@@ -36,9 +37,9 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      - name: create token
+      - name: create DEV_TOKEN
         run: |
-          echo "${{ secrets.TOKEN }}" > ./token
+          echo "${{ secrets.DEV_TOKEN }}" > ./dev_token
           ls -al
 
       - name: npm install, build

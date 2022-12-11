@@ -9,7 +9,7 @@ const channel = 'C04A2C19U31';
 let token;
 
 try {
-  token = fs.readFileSync('./token').toString('utf-8');
+  token = fs.readFileSync('./dev_token').toString('utf-8');
   token = token.trim();
 } catch (err) {
   console.error(err);
