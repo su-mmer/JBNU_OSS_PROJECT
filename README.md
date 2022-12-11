@@ -53,7 +53,7 @@
 ## To start using Slack-bot
 
 > 필요한 것: 서버(로컬 또는 클라우드), 슬랙
-> nodejs(16.x이상), python3 이상
+> nodejs(16.x이상), python3.8 사용(3.11에서는 editdistance 작동 안함)
 > pip install editdistance
 
 1. git clone 또는 zip파일을 다운 받아 주세요.
@@ -87,7 +87,7 @@
 ## To start developing Slack-bot
 
 > 필요한 것: 서버(로컬 또는 클라우드), 슬랙
-> nodejs(16.x이상), python3 이상
+> nodejs(16.x이상), python3.8 사용(3.11에서는 editdistance 작동 안함)
 > pip install editdistance
 
 1. GitHub에 `New Issue`를 등록해주세요. 양식은 Issue 생성 시에 선택하실 수 있습니다.
